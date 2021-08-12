@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Document</title>
+		<style>
+			.box {
+				width: 650px;
+				height: 200px;
+				background-color: #eee;
+				border: 1px solid #ccc;
+				margin: 120px auto;
+			}
+			input {
+				margin-top: 20px;
+			}
+			.password {
+				margin-left: 15px;
+			}
+
+			button {
+				margin: 40px 20px 0 10px;
+			}
+
+			h1{
+				position: absolute;
+				top: 20px;
+				left: 536px;
+			}
+
+			p{
+				position: absolute;
+				left: 636px;
+				top: 70px;
+			}
+
+			img{
+				width: 1174px;
+				height: 1114px;
+				margin-left: 300px;
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1>本地存储之sessionStorage</h1>
+		<p>(localStorage语法一样，就不写了)</p>
+		<div class="box">
+			<div>
+				请输入用户名：<input
+					type="text"
+					class="user"
+					placeholder="请输入用户名"
+				/>
+			</div>
+			<div>
+				请输入密码：<input
+					type="password"
+					class="password"
+					placeholder="请输入密码"
+				/>
+			</div>
+			<button class="set">存储数据</button>
+			<button class="get">获取数据</button>
+			<button class="remove1">删除用户名数据</button>
+			<button class="remove2">删除密码数据</button>
+			<button class="del">清空所有数据</button>
+		</div>
+		<img src="image.png" alt="">
+		
+		<script>
+			console.log(localStorage.getItem('usr'))
+			console.log(localStorage.getItem('pwd'))
+
+			var user = document.querySelector('.user')
+			var password = document.querySelector('.password')
+			var set = document.querySelector('.set')
+			var get = document.querySelector('.get')
+			var remove1 = document.querySelector('.remove1')
+			var remove2 = document.querySelector('.remove2')
+			var del = document.querySelector('.del')
+			set.addEventListener('click', function () {
+				// 当我们点击了之后，就可以把表单里面的值存储起来(set)
+				var usr = user.value
+				var pwd = password.value
+				sessionStorage.setItem('uname', usr)
+				sessionStorage.setItem('pwd', pwd)
+                alert('数据已存储')
+			})
+			get.addEventListener('click', function () {
+				// 当我们点击了之后，就可以把表单里面的值获取过来(get)
+				alert('用户名是：' + sessionStorage.getItem('uname'))
+				alert('密码是:' + sessionStorage.getItem('pwd'))
+			})
+			remove1.addEventListener('click', function () {
+				//删除用户名数据
+				sessionStorage.removeItem('uname')
+			})
+			remove2.addEventListener('click', function () {
+				//删除密码数据
+				sessionStorage.removeItem('pwd')
+			})
+			del.addEventListener('click', function () {
+				// 当我们点击了之后，清除所有的
+				sessionStorage.clear()
+			})
+			
+		</script>
+	</body>
+</html>
